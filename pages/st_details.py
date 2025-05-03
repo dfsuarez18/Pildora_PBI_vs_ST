@@ -51,8 +51,24 @@ flight_columns_format = {
     'elapsedDays': 'Dias Transcurridos'
 }
 
+flight_columns_numeric = [
+    'baseFare',
+    'totalFare',
+    'tax_percent',
+    'durationInSeconds',
+    'distance_km', 
+    'elapsedDays'
+]
+
 flights = pd.DataFrame(st.session_state[FLIGHTS])
 flight_columns_exclude = list(flights.columns)
+
+# Change Type of numeric columns
+flights[flight_columns_numeric] = (
+    flights[flight_columns_numeric]
+    .replace(',', '.', regex=True)
+    .apply(pd.to_numeric)
+)
 
 # Map airlines names
 dictionary_airlines = dict(pd.DataFrame(st.session_state[AIRLINES], columns=['airlineCode', 'airlineName']).values)
@@ -76,18 +92,16 @@ flights['durationInSeconds'] = flights['durationInSeconds'].apply(lambda x: x/60
 flights['departureDateTime'] = pd.to_datetime(flights['departure_date'] + ' ' + flights['departure_time'])
 flights['arrivalDateTime'] = pd.to_datetime(flights['arrival_date'] + ' ' + flights['arrival_time'])
 
-# Get totals
-distance_col = pd.DataFrame(st.session_state[FLIGHTS])['distance_km']
-price_col = pd.DataFrame(st.session_state[FLIGHTS])['totalFare']
+flights.info()
 
-total_distance = pd.to_numeric(distance_col, errors='coerce').sum(skipna=True)
-total_price = pd.to_numeric(price_col, errors='coerce').sum(skipna=True)
+# Get totals
+total_distance = flights['distance_km'].sum(skipna=True)
+total_price = flights['totalFare'].sum(skipna=True)
 total_flights = len(flights)
 
 # Page configuration
 
 col1, col2, col3 = st.columns(3)
-
 
 # TODO: Find a better way to show the distance and price
 with col1:

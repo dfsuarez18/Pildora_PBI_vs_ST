@@ -12,7 +12,7 @@ FLIGHTS_CSV = BASE_CSV_PATH + 'itineraries/itineraries_splitted_formatted.csv'
 
 CSV_LIST = [AIRLINES_CSV, AIRPLANES_CSV, AIRPORTS_CSV, CITIES_CSV, FLIGHTS_CSV]
 
-# Session Names
+# Session Names for Dataframes
 AIRLINES = 'airlines'
 AIRPLANES = 'airplanes'
 AIRPORTS = 'airports'
@@ -23,3 +23,7 @@ TOTAL_PRICE = 'total_price'
 
 TABLE_LIST = [AIRLINES, AIRPLANES, AIRPORTS, CITIES, FLIGHTS]
 assert(len(CSV_LIST) == len(TABLE_LIST))
+
+# Session Names for ST elements
+RADIO_AIRLINE_MODEL_KEY = 'radio_airline_model'
+RADIO_AIRLINE_MODEL_OPTIONS = ['Aerolíneas', 'Modelos']
