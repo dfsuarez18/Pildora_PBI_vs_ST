@@ -92,8 +92,6 @@ flights['durationInSeconds'] = flights['durationInSeconds'].apply(lambda x: x/60
 flights['departureDateTime'] = pd.to_datetime(flights['departure_date'] + ' ' + flights['departure_time'])
 flights['arrivalDateTime'] = pd.to_datetime(flights['arrival_date'] + ' ' + flights['arrival_time'])
 
-flights.info()
-
 # Get totals
 total_distance = flights['distance_km'].sum(skipna=True)
 total_price = flights['totalFare'].sum(skipna=True)

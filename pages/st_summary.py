@@ -111,14 +111,16 @@ with col1:
             'Número de vuelos por aerolínea',
             'Número de Vuelos',
             'Aerolínea',
-            airline_counts
+            airline_counts,
+            PRIMARY_COLOR
         ))
     else:
         st.plotly_chart(horizontal_bars_graph(
             'Número de vuelos por modelo de avión',
             'Número de Vuelos',
             'Modelo',
-            model_counts
+            model_counts,
+            PRIMARY_COLOR
         ))
         
     # Radio button to select show info of airlines or models
@@ -134,14 +136,16 @@ with col1:
             'Top 10 aerolineas por km recorridos',
             'Airline Name',
             'Sum of Km',
-            top_airlines_by_distance
+            top_airlines_by_distance,
+            GRAPH_COLOR_LIST
         ))
     else:
         st.plotly_chart(pie_chart(
             'Top 10 modelos de avión por km recorridos',
             'Modelo',
             'Sum of Km',
-            top_models_by_distance
+            top_models_by_distance,
+            GRAPH_COLOR_LIST
         ))
 
 with col2:
@@ -157,9 +161,11 @@ with col2:
         'count',
         'latitude',
         'longitude',
-        flights_locations
-    ), height=400)
+        flights_locations,
+        PRIMARY_COLOR
+    ), height=450)
     
     st.plotly_chart(line_graph_with_avg(
-        'Evolución temporal del precio medio de un billete', 'Fecha', 'Precio total', 'Precio Medio', price_evolution, avg_price
+        'Evolución temporal del precio medio de un billete', 'Fecha', 'Precio total', 'Precio Medio', 
+        price_evolution, avg_price, PRIMARY_COLOR, SECONDARY_COLOR
     ))

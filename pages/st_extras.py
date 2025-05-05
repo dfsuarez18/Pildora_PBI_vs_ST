@@ -107,7 +107,8 @@ with col1:
         'count',
         'latitude',
         'longitude',
-        flights_locations
+        flights_locations,
+        GRAPH_COLOR_LIST
     ))
     
     st.subheader('TODO: Departures by city, animated by month')
