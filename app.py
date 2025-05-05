@@ -25,7 +25,7 @@ def truncate_log_file(max_lines=800, lines_to_leave=600):
 @st.cache_resource(show_spinner=False)
 def conf_log():
     log.basicConfig(
-        level=log.DEBUG,
+        level=log.INFO,
         format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
         handlers=[
             log.FileHandler(LOG_PATH, mode='a', encoding='utf-8'),

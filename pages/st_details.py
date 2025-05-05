@@ -1,7 +1,51 @@
+import time
 import streamlit as st
 import pandas as pd
+import numpy as np
+from numba import njit
 from utils.global_conf import *
 from pages.st_top_navbar import *
+
+# Methods with cache data for larger calculations
+@st.cache_data(show_spinner='Calculando totales...')
+def compute_totals(flights: pd.DataFrame):
+    
+    return {
+        'total_distance': int(flights['distance_km'].sum(axis=0, skipna=True)),
+        'total_price': int(flights['totalFare'].sum(axis=0, skipna=True)),
+        'total_flights': len(flights)
+    }
+
+@st.cache_data(show_spinner='Cargando la tabla de detalles...')
+def show_details_table(data: pd.DataFrame, selected_columns: list, format_columns: list):
+    st.dataframe(
+        data=data[selected_columns].head(500000),
+        column_config=format_columns,
+        height=None,
+        hide_index=True
+    )
+
+def container_results(title: str, result: int):
+    
+    formatted_result = "{:,}".format(result).replace(",", ".")
+                                                     
+    with st.container(height=130, border=True):
+        _, col2, _ = st.columns([1, 6, 1])
+        
+        with col2:
+            st.markdown(
+                f'<div style="text-align: center;">'
+                f'<p style="font-size:20px; color:{PRIMARY_COLOR}; margin-bottom:0;">'
+                f'<strong>{title}</strong></p></div>',
+                unsafe_allow_html=True
+            )
+            
+            st.markdown(
+                f'<div style="text-align: center;">'
+                f'<p style="font-size:32px; color:{PRIMARY_COLOR}; margin-top:0;">'
+                f'{formatted_result}</p></div>',
+                unsafe_allow_html=True
+            )
 
 # Data configuration
 
@@ -93,35 +137,21 @@ flights['departureDateTime'] = pd.to_datetime(flights['departure_date'] + ' ' + 
 flights['arrivalDateTime'] = pd.to_datetime(flights['arrival_date'] + ' ' + flights['arrival_time'])
 
 # Get totals
-total_distance = flights['distance_km'].sum(skipna=True)
-total_price = flights['totalFare'].sum(skipna=True)
-total_flights = len(flights)
+totals = compute_totals(flights[['distance_km', 'totalFare']])
+total_distance = totals['total_distance']
+total_price = totals['total_price']
+total_flights = totals['total_flights']
 
 # Page configuration
 
-col1, col2, col3 = st.columns(3)
+_, col1, col2, col3, _ = st.columns([1,2,2,2,1])
 
-# TODO: Find a better way to show the distance and price
 with col1:
-    with st.container(height=150, border=True):
-        st.text('Número total de Vuelos')
-        st.code(total_flights, wrap_lines=True)
-
+    container_results("Número total de Vuelos", total_flights)
 with col2: 
-    with st.container(height=150, border=True):
-        st.text('Km totales recorridos')
-        st.code(total_distance, wrap_lines=True)
-
-with col3: 
-    with st.container(height=150, border=True):
-        st.text('$ recaudados en vuelos')
-        st.code(total_price, wrap_lines=True)
+    container_results("Km totales recorridos", total_distance)
+with col3:
+    container_results("Precio total billetes", total_price)
         
-
 st.title('Tabla Detalle de Vuelos')
-st.dataframe(
-    data=flights[flight_columns].head(50000),
-    column_config=flight_columns_format,
-    height=None,
-    hide_index=True
-)
+show_details_table(flights, flight_columns, flight_columns_format)
