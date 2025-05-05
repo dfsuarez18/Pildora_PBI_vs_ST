@@ -100,66 +100,20 @@ col1, col2 = st.columns(2)
 
 with col1:
     
-    if RADIO_AIRLINE_MODEL_KEY not in st.session_state:
-        airline_selected = True
-    else:
-        airline_selected = st.session_state[RADIO_AIRLINE_MODEL_KEY] == RADIO_AIRLINE_MODEL_OPTIONS[1]
-    
-    # Graph with the number of flights by airline/model
-    if airline_selected:
-        st.plotly_chart(horizontal_bars_graph(
-            'Número de vuelos por aerolínea',
-            'Número de Vuelos',
-            'Aerolínea',
-            airline_counts
-        ))
-    else:
-        st.plotly_chart(horizontal_bars_graph(
-            'Número de vuelos por modelo de avión',
-            'Número de Vuelos',
-            'Modelo',
-            model_counts
-        ))
-        
-    # Radio button to select show info of airlines or models
-    st.session_state[RADIO_AIRLINE_MODEL_KEY] = st.radio(
-        label='Visualization Mode', 
-        options=RADIO_AIRLINE_MODEL_OPTIONS, 
-        horizontal=True, 
-        label_visibility='hidden')
-    
-    # Graph with the top airlines/models by Km
-    if airline_selected:
-        st.plotly_chart(pie_chart(
-            'Top 10 aerolineas por km recorridos',
-            'Airline Name',
-            'Sum of Km',
-            top_airlines_by_distance
-        ))
-    else:
-        st.plotly_chart(pie_chart(
-            'Top 10 modelos de avión por km recorridos',
-            'Modelo',
-            'Sum of Km',
-            top_models_by_distance
-        ))
-
-with col2:
-    
-    # Bubble Map of Departures by City
-    st.write("")
-    st.markdown("**Mapa de salidas por aeropuerto**")
-    
-    popup_info = {'Aeropuerto': 'name', 'Ciudad': 'city', 'Estado': 'state_name', 'Num. salidas': 'count'}
-    folium_static(
-        bubble_chart_map(
-        popup_info,
+    st.plotly_chart(bubble_chart_map_colors(
+        'Número de salidas por ciudad',
+        'state_name',
+        'name',
         'count',
         'latitude',
         'longitude',
         flights_locations
-    ), height=400)
-    
-    st.plotly_chart(line_graph_with_avg(
-        'Evolución temporal del precio medio de un billete', 'Fecha', 'Precio total', 'Precio Medio', price_evolution, avg_price
     ))
+    
+    st.subheader('TODO: Departures by city, animated by month')
+
+with col2:
+
+    st.subheader('TODO: Line Map Graph')
+        
+    st.subheader('TODO: States by num departures, colored by Airline')

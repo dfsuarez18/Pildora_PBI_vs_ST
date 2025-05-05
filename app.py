@@ -8,7 +8,8 @@ from utils.global_conf import *
 # Page Configuration
 PAGE_SUMMARY = st.Page("./pages/st_summary.py", title="Graphic Summary of Flights", icon='📊')
 PAGE_DETAIL = st.Page("./pages/st_details.py", title="Flight Details", icon='ℹ️')
-PAGE_LIST = [PAGE_SUMMARY, PAGE_DETAIL]
+PAGE_EXTRAS = st.Page("./pages/st_extras.py", title="Extra Graphs", icon='🎁')
+PAGE_LIST = [PAGE_SUMMARY, PAGE_DETAIL, PAGE_EXTRAS]
 
 @st.cache_resource(show_spinner=False)
 def truncate_log_file(max_lines=800, lines_to_leave=600):

@@ -1,3 +1,4 @@
+import folium
 import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
@@ -46,7 +47,31 @@ def line_graph_with_avg(title: str, x_axis_title: str, y_axis_title: str, avg_ti
 
     return fig
 
-def buble_chart_map(title: str, color_col: str, hoover_col: str, size_col: str, latitude_col: str, longitude_col: str, data: pd.DataFrame, scope: str = 'usa'):
+def bubble_chart_map(hoover_info: dict, size_col: str, latitude_col: str, longitude_col: str, data: pd.DataFrame):
+    
+    # Creates the base map, centered in EEUU
+    fig = folium.Map(location=[39.8283, -98.5795], zoom_start=4)
+    
+    # Adds the bubbles for each row
+    for _, row in data.iterrows():
+        
+        # Creates the popup msg:
+        popup_content = '<div style="width: 150px;">'
+        popup_content += '<br>'.join(f"<b>{key}:</b> {row[value]}" for key, value in hoover_info.items())
+        popup_content += '</div>'
+        
+        folium.CircleMarker(
+            location=[row[latitude_col], row[longitude_col]],
+            radius=row[size_col] / 5000,
+            popup=folium.Popup(popup_content, max_width=300),
+            color='blue',
+            fill=True,
+            fill_opacity=0.6
+        ).add_to(fig)
+    
+    return fig
+
+def bubble_chart_map_colors(title: str, color_col: str, hoover_col: str, size_col: str, latitude_col: str, longitude_col: str, data: pd.DataFrame, scope: str = 'usa'):
     
     fig = px.scatter_geo(
         data, title=title, lat=latitude_col, lon=longitude_col, color=color_col, 
