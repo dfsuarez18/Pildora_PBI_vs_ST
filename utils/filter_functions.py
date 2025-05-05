@@ -23,7 +23,7 @@ def apply_filters():
         .apply(pd.to_numeric)
     )
 
-    flights[['departure_date']] = flights[['departure_date']].apply(pd.to_datetime)
+    flights['departure_date'] = pd.to_datetime(flights['departure_date'])
     flights['model'] = flights['model'].str.strip()
     
     # Map airlines names
@@ -59,12 +59,16 @@ def apply_filters():
     
     flights = flights[flights["totalFare"] <= max_selected_price]
     
-    # FIXME: Fix this filter
+    date1_selected = pd.to_datetime(date1_selected)
+    date2_selected = pd.to_datetime(date2_selected)
+    
     if date2_selected < date1_selected:
         st.toast('La segunda Fecha de Salida, no puede ser anterior que la primera. No será tenida en cuenta para el filtrado', icon='⚠️')
         flights = flights[flights['departure_date'] >= date1_selected]
     else:
-        flights = flights[flights['departure_date'] >= date1_selected]
-        flights = flights[flights['departure_date'] <= date2_selected]
+        flights = flights[
+            (flights['departure_date'] >= date1_selected) & 
+            (flights['departure_date'] <= date2_selected)
+        ]
     
     return pd.DataFrame(flights)

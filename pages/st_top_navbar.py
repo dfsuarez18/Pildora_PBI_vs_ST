@@ -28,14 +28,14 @@ def show_filters():
 
         date1, date2 = col_filter5.columns(2)
             
-        date1 = date1.date_input(
+        st.session_state[DATE1_SELECTED] = date1.date_input(
             "Fecha de salida", 
             value=st.session_state[MIN_DEPARTURE_DATE], 
             min_value=st.session_state[MIN_DEPARTURE_DATE], 
             max_value=st.session_state[MAX_DEPARTURE_DATE]
         )
 
-        date2 = date2.date_input(
+        st.session_state[DATE2_SELECTED] = date2.date_input(
             "date2", 
             value=st.session_state[MAX_DEPARTURE_DATE],
             min_value=st.session_state[MIN_DEPARTURE_DATE],
