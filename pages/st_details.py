@@ -6,8 +6,6 @@ from pages.st_top_navbar import *
 
 # -----------------------------Functions----------------------------------
 
-# Methods with cache data for larger calculations
-@st.cache_data(show_spinner='Calculando totales...')
 def compute_totals(flights: pd.DataFrame):
     
     return {
@@ -16,13 +14,13 @@ def compute_totals(flights: pd.DataFrame):
         'total_flights': len(flights)
     }
 
-@st.cache_data(show_spinner='Cargando la tabla de detalles...')
-def show_details_table(data: pd.DataFrame, selected_columns: list, format_columns: list):
+def show_details_table(data: pd.DataFrame, selected_columns: list, format_columns: dict[str, str]):
     st.dataframe(
         data=data[selected_columns].head(500000),
         column_config=format_columns,
         height=None,
-        hide_index=True
+        hide_index=True,
+        selection_mode='multi-row'
     )
 
 def container_results(title: str, result: int):
@@ -48,6 +46,10 @@ def container_results(title: str, result: int):
             )
 
 # -----------------------------Data Configuration----------------------------------
+
+# Show and apply selected filters
+show_filters()
+flights = apply_filters()
 
 flight_columns = [
     'flight_id', 
@@ -99,8 +101,6 @@ flight_columns_format = {
     'elapsedDays': 'Dias Transcurridos'
 }
 
-flights = apply_filters()
-
 # Map boolean values
 dictionary_boolean = {'N': 'No', 'Y': 'Si'}
 flights['isNonStop'] = flights['isNonStop'].map(dictionary_boolean)
@@ -120,8 +120,6 @@ total_price = totals['total_price']
 total_flights = totals['total_flights']
 
 # -----------------------------Page Configuration----------------------------------
-
-show_filters()
 
 _, col1, col2, col3, _ = st.columns([1,2,2,2,1])
 

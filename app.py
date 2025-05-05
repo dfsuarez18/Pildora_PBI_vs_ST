@@ -5,6 +5,7 @@ import logging as log
 
 from utils.file_functions import *
 from utils.global_conf import *
+from pages.st_top_navbar import show_filters
 
 # Page Configuration
 PAGE_SUMMARY = st.Page("./pages/st_summary.py", title="Graphic Summary of Flights", icon='📊')
@@ -66,6 +67,13 @@ def load_data():
     )
     st.session_state[MAX_DEPARTURE_DATE] = departure_date_col.max()
     st.session_state[MIN_DEPARTURE_DATE] = departure_date_col.min()
+    
+    st.session_state[CITY_SELECTED] = 'Todas'
+    st.session_state[AIRLINE_SELECTED] = 'Todas'
+    st.session_state[MODEL_SELECTED] = 'Todos'
+    st.session_state[MAX_PRICE_SELECTED] = st.session_state[MAX_PRICE]
+    st.session_state[DATE1_SELECTED] = st.session_state[MIN_DEPARTURE_DATE]
+    st.session_state[DATE2_SELECTED] = st.session_state[MAX_DEPARTURE_DATE]
 
 st.set_page_config(
     page_title="NTT Air Dashboard",

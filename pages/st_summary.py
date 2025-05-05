@@ -8,6 +8,10 @@ from streamlit_folium import folium_static
 
 # -----------------------------Data configuration----------------------------------
 
+# Show and apply selected filters
+show_filters()
+flights = apply_filters()
+
 airports_columns_to_select = [
     'code',
     'name',
@@ -18,9 +22,6 @@ airports_columns_to_select = [
 ]
 
 airports = pd.DataFrame(st.session_state[AIRPORTS], columns=airports_columns_to_select)
-
-# Apply selected filters
-flights = apply_filters()
 
 # Dataframes with the number of flights per airline / model
 airline_counts = flights['airlineName'].value_counts().reset_index()
@@ -76,19 +77,19 @@ flights_locations = flights_locations.dropna(axis=0)
 
 # -----------------------------Page Configuration----------------------------------
 
-show_filters()
-
 col1, col2 = st.columns(2)
 
 with col1:
     
-    if RADIO_AIRLINE_MODEL_KEY not in st.session_state:
-        airline_selected = True
-    else:
-        airline_selected = st.session_state[RADIO_AIRLINE_MODEL_KEY] == RADIO_AIRLINE_MODEL_OPTIONS[1]
+    # Radio button to select show info of airlines or models
+    st.session_state[RADIO_AIRLINE_MODEL_KEY] = st.radio(
+        label='Visualization Mode', 
+        options=RADIO_AIRLINE_MODEL_OPTIONS, 
+        horizontal=True, 
+        label_visibility='collapsed')
     
     # Graph with the number of flights by airline/model
-    if airline_selected:
+    if RADIO_AIRLINE_MODEL_KEY not in st.session_state or st.session_state[RADIO_AIRLINE_MODEL_KEY] == RADIO_AIRLINE_MODEL_OPTIONS[0]:
         st.plotly_chart(horizontal_bars_graph(
             'Número de vuelos por aerolínea',
             'Número de Vuelos',
@@ -104,16 +105,9 @@ with col1:
             model_counts,
             PRIMARY_COLOR
         ))
-        
-    # Radio button to select show info of airlines or models
-    st.session_state[RADIO_AIRLINE_MODEL_KEY] = st.radio(
-        label='Visualization Mode', 
-        options=RADIO_AIRLINE_MODEL_OPTIONS, 
-        horizontal=True, 
-        label_visibility='hidden')
     
     # Graph with the top airlines/models by Km
-    if airline_selected:
+    if RADIO_AIRLINE_MODEL_KEY not in st.session_state or st.session_state[RADIO_AIRLINE_MODEL_KEY] == RADIO_AIRLINE_MODEL_OPTIONS[0]:
         st.plotly_chart(pie_chart(
             'Top 10 aerolineas por km recorridos',
             'Airline Name',
@@ -145,7 +139,7 @@ with col2:
         'longitude',
         flights_locations,
         PRIMARY_COLOR
-    ), height=450)
+    ), height=425)
     
     st.plotly_chart(line_graph_with_avg(
         'Evolución temporal del precio medio de un billete', 'Fecha', 'Precio total', 'Precio Medio', 
