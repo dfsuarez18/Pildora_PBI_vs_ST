@@ -1,10 +1,10 @@
-import time
 import streamlit as st
 import pandas as pd
-import numpy as np
-from numba import njit
 from utils.global_conf import *
+from utils.filter_functions import *
 from pages.st_top_navbar import *
+
+# -----------------------------Functions----------------------------------
 
 # Methods with cache data for larger calculations
 @st.cache_data(show_spinner='Calculando totales...')
@@ -47,7 +47,7 @@ def container_results(title: str, result: int):
                 unsafe_allow_html=True
             )
 
-# Data configuration
+# -----------------------------Data Configuration----------------------------------
 
 flight_columns = [
     'flight_id', 
@@ -58,8 +58,10 @@ flight_columns = [
     'arrivalAirportCode',
     'arrivalAirportName', 
     'model',
-    'departureDateTime', 
-    'arrivalDateTime', 
+    'departure_date', 
+    'arrival_date',
+    'departure_time', 
+    'arrival_time', 
     'isNonStop', 
     'isBasicEconomy', 
     'isRefundable', 
@@ -81,8 +83,10 @@ flight_columns_format = {
     'arrivalAirportCode': 'Cod. Aeropuerto LLegada',
     'arrivalAirportName': 'Nombre Aeropuerto LLegada', 
     'model': 'Modelo de Avión',
-    'departureDateTime': 'Fecha Salida', 
-    'arrivalDateTime': 'Fecha LLegada', 
+    'departure_date': 'Fecha de Salida', 
+    'arrival_date': 'Fecha de LLegada',
+    'departure_time': 'Hora de Salida', 
+    'arrival_time': 'Hora de LLegada',
     'isNonStop': 'Sin paradas', 
     'isBasicEconomy': 'Low Cost', 
     'isRefundable': 'Con reembolso', 
@@ -95,33 +99,7 @@ flight_columns_format = {
     'elapsedDays': 'Dias Transcurridos'
 }
 
-flight_columns_numeric = [
-    'baseFare',
-    'totalFare',
-    'tax_percent',
-    'durationInSeconds',
-    'distance_km', 
-    'elapsedDays'
-]
-
-flights = pd.DataFrame(st.session_state[FLIGHTS])
-flight_columns_exclude = list(flights.columns)
-
-# Change Type of numeric columns
-flights[flight_columns_numeric] = (
-    flights[flight_columns_numeric]
-    .replace(',', '.', regex=True)
-    .apply(pd.to_numeric)
-)
-
-# Map airlines names
-dictionary_airlines = dict(pd.DataFrame(st.session_state[AIRLINES], columns=['airlineCode', 'airlineName']).values)
-flights['airlineName'] = flights['airlineCode'].map(dictionary_airlines)
-
-# Map Airport names
-dictionary_airports = dict(pd.DataFrame(st.session_state[AIRPORTS], columns=['code', 'name']).values)
-flights['departureAirportName'] = flights['departureAirportCode'].map(dictionary_airports)
-flights['arrivalAirportName'] = flights['arrivalAirportCode'].map(dictionary_airports)
+flights = apply_filters()
 
 # Map boolean values
 dictionary_boolean = {'N': 'No', 'Y': 'Si'}
@@ -132,9 +110,8 @@ flights['isRefundable'] = flights['isRefundable'].map(dictionary_boolean)
 # Map duration
 flights['durationInSeconds'] = flights['durationInSeconds'].apply(lambda x: x/60/60)
 
-# Map dates and times
-flights['departureDateTime'] = pd.to_datetime(flights['departure_date'] + ' ' + flights['departure_time'])
-flights['arrivalDateTime'] = pd.to_datetime(flights['arrival_date'] + ' ' + flights['arrival_time'])
+# Map departure_date
+flights['departure_date'] = flights['departure_date'].dt.strftime('%Y-%m-%d')
 
 # Get totals
 totals = compute_totals(flights[['distance_km', 'totalFare']])
@@ -142,7 +119,9 @@ total_distance = totals['total_distance']
 total_price = totals['total_price']
 total_flights = totals['total_flights']
 
-# Page configuration
+# -----------------------------Page Configuration----------------------------------
+
+show_filters()
 
 _, col1, col2, col3, _ = st.columns([1,2,2,2,1])
 

@@ -2,20 +2,11 @@ import streamlit as st
 import pandas as pd
 from utils.global_conf import *
 from utils.graph_functions import *
+from utils.filter_functions import *
 from pages.st_top_navbar import *
 from streamlit_folium import folium_static
 
 # -----------------------------Data configuration----------------------------------
-
-flights_columns_to_select = [
-    'flight_id',
-    'airlineCode',
-    'model',
-    'departure_date',
-    'departureAirportCode',
-    'totalFare',
-    'distance_km'
-]
 
 airports_columns_to_select = [
     'code',
@@ -26,21 +17,10 @@ airports_columns_to_select = [
     'longitude'
 ]
 
-flights = pd.DataFrame(st.session_state[FLIGHTS], columns=flights_columns_to_select)
 airports = pd.DataFrame(st.session_state[AIRPORTS], columns=airports_columns_to_select)
 
-# Change Type of columns
-flights[['totalFare', 'distance_km']] = (
-    flights[['totalFare', 'distance_km']]
-    .replace(',', '.', regex=True)
-    .apply(pd.to_numeric)
-)
-
-flights[['departure_date']] = flights[['departure_date']].apply(pd.to_datetime)
-
-# Map airlines names
-dictionary_airlines = dict(pd.DataFrame(st.session_state[AIRLINES], columns=['airlineCode', 'airlineName']).values)
-flights['airlineName'] = flights['airlineCode'].map(dictionary_airlines)
+# Apply selected filters
+flights = apply_filters()
 
 # Dataframes with the number of flights per airline / model
 airline_counts = flights['airlineName'].value_counts().reset_index()
@@ -95,6 +75,8 @@ flights_locations = pd.merge(flights_locations, airports, on='code', how='left',
 flights_locations = flights_locations.dropna(axis=0)
 
 # -----------------------------Page Configuration----------------------------------
+
+show_filters()
 
 col1, col2 = st.columns(2)
 

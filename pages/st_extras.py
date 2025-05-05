@@ -96,6 +96,8 @@ flights_locations = flights_locations.dropna(axis=0)
 
 # -----------------------------Page Configuration----------------------------------
 
+show_filters()
+
 col1, col2 = st.columns(2)
 
 with col1:

@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import logging as log
 
 from utils.file_functions import *
@@ -10,6 +11,10 @@ PAGE_SUMMARY = st.Page("./pages/st_summary.py", title="Graphic Summary of Flight
 PAGE_DETAIL = st.Page("./pages/st_details.py", title="Flight Details", icon='ℹ️')
 PAGE_EXTRAS = st.Page("./pages/st_extras.py", title="Extra Graphs", icon='🎁')
 PAGE_LIST = [PAGE_SUMMARY, PAGE_DETAIL, PAGE_EXTRAS]
+
+def column_to_list(df: pd.DataFrame, column_name: str):
+    processed_serie = pd.Series(df[column_name].dropna(axis=0).to_numpy()).str.strip().sort_values().unique()
+    return processed_serie.tolist()
 
 @st.cache_resource(show_spinner=False)
 def truncate_log_file(max_lines=800, lines_to_leave=600):
@@ -46,6 +51,21 @@ def load_data():
         name = TABLE_LIST[i]
 
         st.session_state[name] = read_csv(path)
+        
+    # Configure filter data
+    st.session_state[LIST_CITIES] = column_to_list(st.session_state[AIRPORTS], 'city')
+    st.session_state[LIST_AIRLINES] = column_to_list(st.session_state[AIRLINES], 'airlineName')
+    st.session_state[LIST_MODELS] = column_to_list(st.session_state[AIRPLANES], 'model')
+    
+    price_array = pd.Series(st.session_state[FLIGHTS]['totalFare']).dropna(axis=0)
+    st.session_state[MAX_PRICE] = int(price_array.max())
+    st.session_state[MIN_PRICE] = int(price_array.min())
+    
+    departure_date_col = pd.to_datetime(
+        pd.Series(st.session_state[FLIGHTS]['departure_date']).dropna()
+    )
+    st.session_state[MAX_DEPARTURE_DATE] = departure_date_col.max()
+    st.session_state[MIN_DEPARTURE_DATE] = departure_date_col.min()
 
 st.set_page_config(
     page_title="NTT Air Dashboard",
