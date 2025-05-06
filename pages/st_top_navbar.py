@@ -9,7 +9,10 @@ SECONDARY_COLOR = "#1e81b0"
 GRAPH_COLOR_LIST = [PRIMARY_COLOR] + plotly.colors.qualitative.Prism[:-1] + plotly.colors.qualitative.Pastel[:-1]
 
 # -----------------------------Logo Configuration----------------------------------
-# TODO: Insert the image in resources
+def show_logo():    
+    _, col, _ = st.columns([0.4, 0.2, 0.4])
+    
+    col.image(TOP_IMAGE)
 
 # -----------------------------Filter Components Configuration---------------------------
 

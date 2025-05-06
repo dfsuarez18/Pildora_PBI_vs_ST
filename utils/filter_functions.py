@@ -47,7 +47,7 @@ def transform_flights():
     return flights
 
 
-def apply_filters():
+def apply_filters() -> pd.DataFrame:
     
     # Cached data
     flights = transform_flights()

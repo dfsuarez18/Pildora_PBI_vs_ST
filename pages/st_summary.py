@@ -9,6 +9,7 @@ from streamlit_folium import folium_static
 # -----------------------------Data configuration----------------------------------
 
 # Show and apply selected filters
+show_logo()
 show_filters()
 flights = apply_filters()
 

@@ -48,6 +48,7 @@ def container_results(title: str, result: int):
 # -----------------------------Data Configuration----------------------------------
 
 # Show and apply selected filters
+show_logo()
 show_filters()
 flights = apply_filters()
 

@@ -1,6 +1,6 @@
 # General Paths
 LOG_PATH = './log_app.log'
-TOP_IMAGE = './resources/nttairAlargado.png'
+TOP_IMAGE = './resources/nttair_fondo_transparente.png'
 BASE_CSV_PATH = 'G:/datasets/flight_prices_dataset/' # Modify it to locate the dataset folder path
 
 # CSV Paths

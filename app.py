@@ -11,7 +11,7 @@ from pages.st_top_navbar import show_filters
 PAGE_SUMMARY = st.Page("./pages/st_summary.py", title="Graphic Summary of Flights", icon='📊')
 PAGE_DETAIL = st.Page("./pages/st_details.py", title="Flight Details", icon='ℹ️')
 PAGE_EXTRAS = st.Page("./pages/st_extras.py", title="Extra Graphs", icon='🎁')
-PAGE_LIST = [PAGE_SUMMARY, PAGE_DETAIL, PAGE_EXTRAS]
+PAGE_LIST = [PAGE_SUMMARY, PAGE_DETAIL]
 
 def column_to_list(df: pd.DataFrame, column_name: str):
     processed_serie = pd.Series(df[column_name].dropna(axis=0).to_numpy()).str.strip().sort_values().unique()
@@ -80,7 +80,7 @@ st.set_page_config(
     page_icon="✈️",
     layout="wide",
     
-    initial_sidebar_state='expanded')
+    initial_sidebar_state='collapsed')
 
 truncate_log_file()
 conf_log()
