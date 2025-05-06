@@ -12,7 +12,8 @@ flight_columns_numeric = [
     'elapsedDays'
 ]
 
-def apply_filters():
+@st.cache_data(show_spinner='Transformando la información de vuelos...')
+def transform_flights():
     
     flights = pd.DataFrame(st.session_state[FLIGHTS])
     
@@ -43,32 +44,47 @@ def apply_filters():
     dictionary_cities = dict(airports_cities.values)
     flights['departureCity'] = flights['departureAirportCode'].map(dictionary_cities)
     
+    return flights
+
+
+def apply_filters():
+    
+    # Cached data
+    flights = transform_flights()
+    
     selected_city = st.session_state[CITY_SELECTED]
     selected_airline = st.session_state[AIRLINE_SELECTED]
     selected_model = st.session_state[MODEL_SELECTED]
     max_selected_price = st.session_state[MAX_PRICE_SELECTED]
     date1_selected = st.session_state[DATE1_SELECTED]
     date2_selected = st.session_state[DATE2_SELECTED]
-    
-    if selected_city != "Todas":
-        flights = flights[flights["departureCity"] == selected_city]
-    if selected_airline != "Todas":
-        flights = flights[flights["airlineName"] == selected_airline]
-    if selected_model != "Todos":
-        flights = flights[flights["model"] == selected_model]
-    
-    flights = flights[flights["totalFare"] <= max_selected_price]
-    
+
     date1_selected = pd.to_datetime(date1_selected)
     date2_selected = pd.to_datetime(date2_selected)
     
-    if date2_selected < date1_selected:
-        st.toast('La segunda Fecha de Salida, no puede ser anterior que la primera. No será tenida en cuenta para el filtrado', icon='⚠️')
-        flights = flights[flights['departure_date'] >= date1_selected]
-    else:
-        flights = flights[
-            (flights['departure_date'] >= date1_selected) & 
-            (flights['departure_date'] <= date2_selected)
-        ]
+    # Build combined mask
+    mask = pd.Series(True, index=flights.index)
     
-    return pd.DataFrame(flights)
+    # City filter
+    if selected_city != "Todas":
+        mask &= (flights["departureCity"] == selected_city)
+    
+    # Airline filter
+    if selected_airline != "Todas":
+        mask &= (flights["airlineName"] == selected_airline)
+    
+    # Model filter
+    if selected_model != "Todos":
+        mask &= (flights["model"] == selected_model)
+    
+    # Price filter
+    mask &= (flights["totalFare"] <= max_selected_price)
+    
+    # Date filter
+    if date2_selected < date1_selected:
+        st.toast('La segunda Fecha de Salida no puede ser anterior que la primera. No será tenida en cuenta para el filtrado', icon='⚠️')
+        mask &= (flights['departure_date'] >= date1_selected)
+    else:
+        mask &= (flights['departure_date'] >= date1_selected) & (flights['departure_date'] <= date2_selected)
+    
+    return flights[mask].copy()
