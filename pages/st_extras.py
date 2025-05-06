@@ -2,16 +2,20 @@ import streamlit as st
 import pandas as pd
 from utils.global_conf import *
 from utils.graph_functions import *
-from utils.filter_functions import *
 from pages.st_top_navbar import *
 from streamlit_folium import folium_static
 
 # -----------------------------Data configuration----------------------------------
 
-# Show and apply selected filters
-show_logo()
-show_filters()
-flights = apply_filters()
+flights_columns_to_select = [
+    'flight_id',
+    'airlineCode',
+    'model',
+    'departure_date',
+    'departureAirportCode',
+    'totalFare',
+    'distance_km'
+]
 
 airports_columns_to_select = [
     'code',
@@ -22,7 +26,21 @@ airports_columns_to_select = [
     'longitude'
 ]
 
+flights = pd.DataFrame(st.session_state[FLIGHTS], columns=flights_columns_to_select)
 airports = pd.DataFrame(st.session_state[AIRPORTS], columns=airports_columns_to_select)
+
+# Change Type of columns
+flights[['totalFare', 'distance_km']] = (
+    flights[['totalFare', 'distance_km']]
+    .replace(',', '.', regex=True)
+    .apply(pd.to_numeric)
+)
+
+flights[['departure_date']] = flights[['departure_date']].apply(pd.to_datetime)
+
+# Map airlines names
+dictionary_airlines = dict(pd.DataFrame(st.session_state[AIRLINES], columns=['airlineCode', 'airlineName']).values)
+flights['airlineName'] = flights['airlineCode'].map(dictionary_airlines)
 
 # Dataframes with the number of flights per airline / model
 airline_counts = flights['airlineName'].value_counts().reset_index()
@@ -78,71 +96,27 @@ flights_locations = flights_locations.dropna(axis=0)
 
 # -----------------------------Page Configuration----------------------------------
 
+show_filters()
+
 col1, col2 = st.columns(2)
 
 with col1:
     
-    # Radio button to select show info of airlines or models
-    st.session_state[RADIO_AIRLINE_MODEL_KEY] = st.radio(
-        label='Visualization Mode', 
-        options=RADIO_AIRLINE_MODEL_OPTIONS, 
-        horizontal=True, 
-        label_visibility='collapsed')
-    
-    # Graph with the number of flights by airline/model
-    if RADIO_AIRLINE_MODEL_KEY not in st.session_state or st.session_state[RADIO_AIRLINE_MODEL_KEY] == RADIO_AIRLINE_MODEL_OPTIONS[0]:
-        st.plotly_chart(horizontal_bars_graph(
-            'Número de vuelos por aerolínea',
-            'Número de Vuelos',
-            'Aerolínea',
-            airline_counts,
-            PRIMARY_COLOR
-        ))
-    else:
-        st.plotly_chart(horizontal_bars_graph(
-            'Número de vuelos por modelo de avión',
-            'Número de Vuelos',
-            'Modelo',
-            model_counts,
-            PRIMARY_COLOR
-        ))
-    
-    # Graph with the top airlines/models by Km
-    if RADIO_AIRLINE_MODEL_KEY not in st.session_state or st.session_state[RADIO_AIRLINE_MODEL_KEY] == RADIO_AIRLINE_MODEL_OPTIONS[0]:
-        st.plotly_chart(pie_chart(
-            'Top 10 aerolineas por km recorridos',
-            'Airline Name',
-            'Sum of Km',
-            top_airlines_by_distance,
-            GRAPH_COLOR_LIST
-        ))
-    else:
-        st.plotly_chart(pie_chart(
-            'Top 10 modelos de avión por km recorridos',
-            'Modelo',
-            'Sum of Km',
-            top_models_by_distance,
-            GRAPH_COLOR_LIST
-        ))
-
-with col2:
-    
-    # Bubble Map of Departures by City
-    st.write("")
-    st.markdown("**Mapa de salidas por aeropuerto**")
-    
-    popup_info = {'Aeropuerto': 'name', 'Ciudad': 'city', 'Estado': 'state_name', 'Num. salidas': 'count'}
-    folium_static(
-        bubble_chart_map(
-        popup_info,
+    st.plotly_chart(bubble_chart_map_colors(
+        'Número de salidas por ciudad',
+        'state_name',
+        'name',
         'count',
         'latitude',
         'longitude',
         flights_locations,
-        PRIMARY_COLOR
-    ), height=425)
-    
-    st.plotly_chart(line_graph_with_avg(
-        'Evolución temporal del precio medio de un billete', 'Fecha', 'Precio total', 'Precio Medio', 
-        price_evolution, avg_price, PRIMARY_COLOR, SECONDARY_COLOR
+        GRAPH_COLOR_LIST
     ))
+    
+    st.subheader('TODO: Departures by city, animated by month')
+
+with col2:
+
+    st.subheader('TODO: Line Map Graph')
+        
+    st.subheader('TODO: States by num departures, colored by Airline')
