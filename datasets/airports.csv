@@ -1,0 +1,176 @@
+code;name;city;state;latitude;longitude
+ABE;Lehigh Valley International Airport            ;Allentown           ;PA;40.7;-75.4
+ABQ;Albuquerque International Sunport              ;Albuquerque         ;NM;35;-106.6
+ACK;Nantucket Memorial Airport                     ;Nantucket           ;MA;41.3;-70.1
+ACV;Arcata Airport                                 ;Arcata/Eureka       ;CA;41;-124.1
+AEX;Alexandria International Airport               ;Alexandria          ;LA;31.3;-92.5
+AGS;Augusta Regional Airport (Bush Field)         ;Augusta             ;GA;33.4;-82
+ALB;Albany International Airport                   ;Albany              ;NY;42.7;-73.8
+ATL;Hartsfield-Jackson Atlanta International Airpor;Atlanta             ;GA;33.6;-84.4
+ATY;Watertown Regional Airport                     ;Watertown           ;FL;44.9;-97.2
+AUS;Austin-Bergstrom International Airport         ;Austin              ;TX;30.2;-97.7
+AVL;Asheville Regional Airport                     ;Asheville           ;NC;35.4;-82.5
+AVP;Wilkes-Barre/Scranton International Airport    ;Wilkes-Barre/Scranto;PA;41.3;-75.7
+BDL;Bradley International Airport                  ;Windsor Locks       ;CT;41.9;-72.7
+BFD;Bradford Regional Airport                      ;Bradford            ;AR;41.8;-78.6
+BGR;Bangor International Airport                   ;Bangor              ;ME;44.8;-68.8
+BHM;Birmingham-Shuttlesworth International Airport ;Birmingham          ;AL;33.6;-86.8
+BIL;Billings Logan International Airport           ;Billings            ;MT;45.8;-108.5
+BMI;Central Illinois Regional Airport at Bloomingto;Bloomington         ;IL;40.5;-88.9
+BNA;Nashville International Airport                ;Nashville           ;TN;36.1;-86.7
+BOI;Boise Airport (Boise Air Terminal)            ;Boise               ;ID;43.6;-116.2
+BOS;Gen. Edward Lawrence Logan International Airpor;Boston              ;MA;42.4;-71
+BTV;Burlington International Airport               ;Burlington          ;VT;44.5;-73.2
+BUF;Buffalo Niagara International Airport          ;Buffalo             ;NY;42.9;-78.7
+BUR;Bob Hope Airport (Hollywood Burbank Airport)  ;Burbank             ;CA;34.2;-118.4
+BWI;Baltimore-Washington International Airport     ;Baltimore           ;MD;39.2;-76.7
+BZN;Bozeman Yellowstone International Airport (Gal;Bozeman             ;MT;45.8;-111.2
+CAE;Columbia Metropolitan Airport                  ;Columbia            ;SC;33.9;-81.1
+CEZ;Cortez Municipal Airport                       ;Cortez              ;CO;37.3;-108.6
+CHA;Chattanooga Metropolitan Airport (Lovell Field;Chattanooga         ;TN;35;-85.2
+CHO;Charlottesville-Albemarle Airport              ;Charlottesville     ;VA;38.1;-78.5
+CHS;Charleston International Airport/Charleston AFB;Charleston          ;SC;32.9;-80
+CID;The Eastern Iowa Airport                       ;Cedar Rapids        ;IA;41.9;-91.7
+CKB;North Central West Virginia Airport            ;Clarksburg          ;CA;39.3;-80.2
+CLE;Cleveland Hopkins International Airport        ;Cleveland           ;OH;41.4;-81.8
+CLT;Charlotte Douglas International Airport        ;Charlotte           ;NC;35.2;-80.9
+CMH;Port Columbus International Airport            ;Columbus            ;OH;40;-82.9
+CNM;Cavern City Air Terminal                       ;Carlsbad            ;CA;32.3;-104.3
+COS;City of Colorado Springs Municipal Airport     ;Colorado Springs    ;CO;38.8;-104.7
+COU;Columbia Regional Airport                      ;Columbia            ;MO;38.8;-92.2
+CVG;Cincinnati/Northern Kentucky International Airp;Covington           ;KY;39;-84.7
+CVN;Clovis Municipal Airport                       ;Clovis              ;CA;34.4;-103.1
+DAL;Dallas Love Field                              ;Dallas              ;TX;32.8;-96.9
+DAY;James M. Cox Dayton International Airport      ;Dayton              ;OH;39.9;-84.2
+DCA;Ronald Reagan Washington National Airport      ;Arlington           ;VA;38.9;-77
+DEN;Denver International Airport                   ;Denver              ;CO;39.9;-104.7
+DFW;Dallas/Fort Worth International Airport        ;Dallas-Fort Worth   ;TX;32.9;-97
+DSM;Des Moines International Airport               ;Des Moines          ;IA;41.5;-93.7
+DTW;Detroit Metropolitan Airport                   ;Detroit             ;MI;42.2;-83.3
+DUJ;DuBois Regional Airport                        ;Du Bois             ;IL;41.2;-78.9
+ELP;El Paso International Airport                  ;El Paso             ;TX;31.8;-106.4
+EUG;Eugene Airport (Mahlon Sweet Field)           ;Eugene              ;OR;44.1;-123.2
+EVV;Evansville Regional Airport                    ;Evansville          ;IN;38;-87.5
+EWR;Newark Liberty International Airport           ;Newark              ;NJ;40.7;-74.2
+EYW;Key West International Airport                 ;Key West            ;FL;24.6;-81.8
+FAT;Fresno Yosemite International Airport          ;Fresno              ;CA;36.8;-119.7
+FCA;Glacier Park International Airport             ;Kalispell           ;MT;48.3;-114.3
+FLL;Fort Lauderdale-Hollywood International Airport;Ft. Lauderdale      ;FL;26.1;-80.2
+FNT;Bishop International Airport                   ;Flint               ;MI;43;-83.7
+FSD;Sioux Falls Regional Airport                   ;Sioux Falls         ;SD;43.6;-96.7
+FWA;Fort Wayne International Airport               ;Fort Wayne          ;IN;41;-85.2
+GEG;Spokane International Airport                  ;Spokane             ;WA;47.6;-117.5
+GLH;Mid Delta Regional Airport                     ;Greenville          ;AL;33.5;-91
+GNV;Gainesville Regional Airport                   ;Gainesville         ;FL;29.7;-82.3
+GRB;Green Bay-Austin Straubel International Airport;Green Bay           ;WI;44.5;-88.1
+GRR;Gerald R. Ford International Airport           ;Grand Rapids        ;MI;42.9;-85.5
+GSO;Piedmont Triad International Airport           ;Greensboro          ;NC;36.1;-79.9
+GSP;Greenville-Spartanburg International Airport   ;Greer               ;SC;34.9;-82.2
+GTF;Great Falls International Airport              ;Great Falls         ;MT;47.5;-111.4
+HPN;Westchester County Airport                     ;White Plains        ;NY;41.1;-73.7
+HSV;Huntsville International Airport               ;Huntsville          ;AL;34.6;-86.8
+HYA;Barnstable Municipal Airport                   ;Hyannis             ;MA;41.7;-70.3
+IAD;Washington Dulles International Airport        ;Chantilly           ;VA;38.9;-77.5
+IAH;George Bush Intercontinental Airport           ;Houston             ;TX;30;-95.3
+ICT;Wichita Dwight D. Eisenhower National Airport ;Wichita             ;KS;37.6;-97.4
+ILM;Wilmington International Airport               ;Wilmington          ;NC;34.3;-77.9
+IMT;Ford Airport                                   ;Iron Mountain/Kingsf;MI;45.8;-88.1
+IND;Indianapolis International Airport             ;Indianapolis        ;IN;39.7;-86.3
+ITH;Ithaca Tompkins Regional Airport               ;Ithaca              ;NY;42.5;-76.5
+JAN;Jackson-Evers International Airport            ;Jackson             ;MS;32.3;-90.1
+JAX;Jacksonville International Airport             ;Jacksonville        ;FL;30.5;-81.7
+JFK;John F. Kennedy International Airport (New Yor;New York            ;NY;40.6;-73.8
+LAS;McCarran International Airport                 ;Las Vegas           ;NV;36.1;-115.2
+LAX;Los Angeles International Airport              ;Los Angeles         ;CA;33.9;-118.4
+LEX;Blue Grass Airport                             ;Lexington           ;KY;38;-84.6
+LFT;Lafayette Regional Airport                     ;Lafayette           ;LA;30.2;-92
+LGA;LaGuardia Airport (Marine Air Terminal)        ;New York            ;NY;40.8;-73.9
+LIT;Bill and Hillary Clinton National Airport (Ada;Little Rock         ;AR;34.7;-92.2
+LNK;Lincoln Airport (Lincoln Municipal)           ;Lincoln             ;NE;40.9;-96.8
+LNS;Lancaster Airport                              ;Lancaster           ;CA;40.1;-76.3
+MAF;Midland International Airport                  ;Midland             ;TX;31.9;-102.2
+MBS;MBS International Airport                      ;Saginaw             ;MI;43.5;-84.1
+MCI;Kansas City International Airport              ;Kansas City         ;MO;39.3;-94.7
+MCO;Orlando International Airport                  ;Orlando             ;FL;28.4;-81.3
+MDT;Harrisburg International Airport               ;Harrisburg          ;PA;40.2;-76.8
+MEM;Memphis International Airport                  ;Memphis             ;TN;35;-90
+MFR;Rogue Valley International Airport             ;Medford             ;OR;42.4;-122.9
+MGM;Montgomery Regional Airport                    ;Montgomery          ;AL;32.3;-86.4
+MGW;Morgantown Municipal Walter L. Bill Hart Field ;Morgantown          ;IN;39.6;-79.9
+MHK;Manhattan Regional Airport                     ;Manhattan           ;KS;39.1;-96.7
+MIA;Miami International Airport                    ;Miami               ;FL;25.8;-80.3
+MKE;General Mitchell International Airport         ;Milwaukee           ;WI;42.9;-87.9
+MKL;McKellar-Sipes Regional Airport                ;Jackson             ;AL;35.6;-88.9
+MLI;Quad City International Airport                ;Moline              ;IL;41.4;-90.5
+MOB;Mobile Regional Airport                        ;Mobile              ;AL;30.7;-88.2
+MRY;Monterey Regional Airport (Monterey Peninsula ;Monterey            ;CA;36.6;-121.8
+MSN;Dane County Regional Airport                   ;Madison             ;WI;43.1;-89.3
+MSO;Missoula International Airport                 ;Missoula            ;MT;46.9;-114.1
+MSP;Minneapolis-Saint Paul International Airport   ;Minneapolis         ;MN;44.9;-93.2
+MSS;Massena International Richards Field           ;Massena             ;IA;44.9;-74.8
+MSY;Louis Armstrong New Orleans International Airpo;New Orleans         ;LA;30;-90.3
+MVY;Martha's Vineyard Airport                      ;Marthas Vineyard    ;MA;41.4;-70.6
+MWA;Williamson County Regional Airport             ;Marion              ;AL;37.8;-89
+MYR;Myrtle Beach International Airport             ;Myrtle Beach        ;SC;33.7;-78.9
+OAK;Oakland International Airport                  ;Oakland             ;CA;37.7;-122.2
+OGS;Ogdensburg International Airport               ;Ogdensburg          ;NJ;44.7;-75.5
+OKC;Will Rogers World Airport                      ;Oklahoma City       ;OK;35.4;-97.6
+OMA;Eppley Airfield                                ;Omaha               ;NE;41.3;-95.9
+ONT;Ontario International Airport                  ;Ontario             ;CA;34.1;-117.6
+ORD;Chicago O'Hare International Airport           ;Chicago             ;IL;42;-87.9
+ORF;Norfolk International Airport                  ;Norfolk             ;VA;36.9;-76.2
+OTH;Southwest Oregon Regional Airport (North Bend ;North Bend          ;OR;43.4;-124.2
+OWB;Owensboro Daviess County Airport               ;Owensboro           ;KY;37.7;-87.2
+PBI;Palm Beach International Airport               ;West Palm Beach     ;FL;26.7;-80.1
+PDX;Portland International Airport                 ;Portland            ;OR;45.6;-122.6
+PHF;Newport News/Williamsburg International Airport;Newport News        ;VA;37.1;-76.5
+PHL;Philadelphia International Airport             ;Philadelphia        ;PA;39.9;-75.2
+PHX;Phoenix Sky Harbor International Airport       ;Phoenix             ;AZ;33.4;-112
+PIA;General Wayne A. Downing Peoria International A;Peoria              ;IL;40.7;-89.7
+PIT;Pittsburgh International Airport               ;Pittsburgh          ;PA;40.5;-80.2
+PNS;Pensacola International Airport (Pensacola Gul;Pensacola           ;FL;30.5;-87.2
+PRC;Ernest A. Love Field                           ;Prescott            ;AR;34.7;-112.4
+PSC;Tri-Cities Airport                             ;Pasco               ;WA;46.3;-119.1
+PSP;Palm Springs International Airport             ;Palm Springs        ;CA;33.8;-116.5
+PVD;Theodore Francis Green State Airport           ;Providence          ;RI;41.7;-71.4
+PWM;Portland International Jetport                 ;Portland            ;ME;43.6;-70.3
+RAP;Rapid City Regional Airport                    ;Rapid City          ;SD;44;-103.1
+RDD;Redding Municipal Airport                      ;Redding             ;CA;40.5;-122.3
+RDM;Redmond Municipal Airport (Roberts Field)     ;Redmond             ;OR;44.3;-121.1
+RDU;Raleigh-Durham International Airport           ;Raleigh             ;NC;35.9;-78.8
+RIC;Richmond International Airport                 ;Richmond            ;VA;37.5;-77.3
+RNO;Reno/Tahoe International Airport               ;Reno                ;NV;39.5;-119.8
+ROA;Roanoke Regional Airport (Woodrum Field)      ;Roanoke             ;VA;37.3;-80
+ROC;Greater Rochester International Airport        ;Rochester           ;NY;43.1;-77.7
+RSW;Southwest Florida International Airport        ;Ft. Myers           ;FL;26.5;-81.8
+SAN;San Diego International Airport (Lindbergh Fie;San Diego           ;CA;32.7;-117.2
+SAT;San Antonio International Airport              ;San Antonio         ;TX;29.5;-98.5
+SAV;Savannah/Hilton Head International Airport     ;Savannah            ;GA;32.1;-81.2
+SBA;Santa Barbara Municipal Airport (Santa Barbara;Santa Barbara       ;CA;34.4;-119.8
+SBP;San Luis Obispo County Regional Airport (McChe;San Luis Obispo     ;CA;35.2;-120.6
+SDF;Louisville International Airport (Standiford F;Louisville          ;KY;38.2;-85.7
+SEA;Seattle-Tacoma International Airport           ;Seattle             ;WA;47.4;-122.3
+SFO;San Francisco International Airport            ;San Francisco       ;CA;37.6;-122.4
+SGF;Springfield-Branson National Airport           ;Springfield         ;MO;37.2;-93.4
+SHV;Shreveport Regional Airport                    ;Shreveport          ;LA;32.4;-93.8
+SJC;Norman Y. Mineta San José International Airpor;San Jose            ;CA;37.4;-121.9
+SJU;Luis Muñoz Marín International Airport       ;San Juan            ;PR;18.4;-66
+SLC;Salt Lake City International Airport           ;Salt Lake City      ;UT;40.8;-112
+SLK;Adirondack Regional Airport                    ;Saranac Lake        ;NY;44.4;-74.2
+SMF;Sacramento International Airport               ;Sacramento          ;CA;38.7;-121.6
+SNA;John Wayne Airport (Orange County Airport)    ;Santa Ana           ;CA;33.7;-117.9
+SRQ;Sarasota-Bradenton International Airport       ;Sarasota            ;FL;27.4;-82.6
+STL;St. Louis International Airport at Lambert Fiel;St Louis            ;MO;38.7;-90.4
+STS;Charles M. Schulz Sonoma County Airport        ;Santa Rosa          ;AZ;38.5;-122.8
+SUX;Sioux Gateway Airport                          ;Sioux City          ;IA;42.4;-96.4
+SYR;Syracuse Hancock International Airport         ;Syracuse            ;NY;43.1;-76.1
+TEX;Telluride Regional Airport                     ;Telluride           ;CO;38;-107.9
+TLH;Tallahassee International Airport              ;Tallahassee         ;FL;30.4;-84.4
+TPA;Tampa International Airport                    ;Tampa               ;FL;28;-82.5
+TTN;Trenton Mercer Airport                         ;Trenton             ;NJ;40.3;-74.8
+TUL;Tulsa International Airport                    ;Tulsa               ;OK;36.2;-95.9
+TUS;Tucson International Airport                   ;Tucson              ;AZ;32.1;-110.9
+TVC;Cherry Capital Airport                         ;Traverse City       ;MI;44.7;-85.6
+TYS;McGhee Tyson Airport                           ;Knoxville           ;TN;35.8;-84
+UIN;Quincy Regional Baldwin Field                  ;Quincy              ;CA;39.9;-91.2
+XNA;Northwest Arkansas Regional Airport            ;Fayetteville/Springd;AR;36.3;-94.3

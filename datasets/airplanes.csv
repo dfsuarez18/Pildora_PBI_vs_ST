@@ -1,0 +1,40 @@
+model;manufacturer;type;body_type;propulsion;num_motors;motor_position
+airbus industrie a320 sharklets;Airbus SE;comercial       ;narrow-body;turbofan ;2;under-wing
+airbus industrie a321 sharklets;Airbus SE;comercial       ;narrow-body;turbofan ;2;under-wing
+airbus industrie a350-900;Airbus SE;comercial       ;wide-body  ;turbofan ;2;under-wing
+airbus a220-100;Airbus SE;comercial       ;narrow-body;turbofan ;2;under-wing
+airbus a319;Airbus SE;comercial       ;narrow-body;turbofan ;2;under-wing
+airbus a319-321;Airbus SE;comercial       ;narrow-body;turbofan ;2;under-wing
+airbus a320;Airbus SE;comercial       ;narrow-body;turbofan ;2;under-wing
+airbus a321;Airbus SE;comercial       ;narrow-body;turbofan ;2;under-wing
+airbus a330-200;Airbus SE;comercial       ;wide-body  ;turbofan ;2;under-wing
+airbus a330-300;Airbus SE;comercial       ;wide-body  ;turbofan ;2;under-wing
+boeing 777-300er;The Boeing Company;comercial       ;wide-body  ;turbofan ;2;under-wing
+boeing 787-9;The Boeing Company;comercial       ;wide-body  ;turbofan ;2;under-wing
+boeing 717;The Boeing Company;comercial       ;narrow-body;turbofan ;2;back      
+boeing 737;The Boeing Company;comercial       ;narrow-body;turbofan ;2;under-wing
+boeing 737 max 8;The Boeing Company;comercial       ;narrow-body;turbofan ;2;under-wing
+boeing 737 max 9;The Boeing Company;comercial       ;narrow-body;turbofan ;2;under-wing
+boeing 737-700;The Boeing Company;comercial       ;narrow-body;turbofan ;2;under-wing
+boeing 737-800;The Boeing Company;comercial       ;narrow-body;turbofan ;2;under-wing
+boeing 737-900;The Boeing Company;comercial       ;narrow-body;turbofan ;2;under-wing
+boeing 757;The Boeing Company;comercial       ;narrow-body;turbofan ;2;under-wing
+boeing 757-200;The Boeing Company;comercial       ;narrow-body;turbofan ;2;under-wing
+boeing 757-300;The Boeing Company;comercial       ;narrow-body;turbofan ;2;under-wing
+boeing 767;The Boeing Company;comercial       ;wide-body  ;turbofan ;2;under-wing
+boeing 767-300;The Boeing Company;comercial       ;wide-body  ;turbofan ;2;under-wing
+boeing 777;The Boeing Company;comercial       ;wide-body  ;turbofan ;2;under-wing
+boeing 777-200;The Boeing Company;comercial       ;wide-body  ;turbofan ;2;under-wing
+boeing 787;The Boeing Company;comercial       ;wide-body  ;turbofan ;2;under-wing
+boeing 787-8;The Boeing Company;comercial       ;wide-body  ;turbofan ;2;under-wing
+cessna;Cessna Aircraft Company;;;;;
+dehavilland dhc-8 400;Bombardier Aerospace;comercial       ;narrow-body;turboprop;2;under-wing
+embraer 170;Embraer SA;comercial       ;narrow-body;turbofan ;2;under-wing
+embraer 175;Embraer SA;comercial       ;narrow-body;turbofan ;2;under-wing
+embraer 175 (enhanced winglets);Embraer SA;comercial       ;narrow-body;turbofan ;2;under-wing
+embraer 190;Embraer SA;comercial       ;narrow-body;turbofan ;2;under-wing
+embraer emb-145;Embraer SA;regional-jet    ;narrow-body;turbofan ;2;back      
+embraer rj145;Embraer SA;regional-jet    ;narrow-body;turbofan ;2;back      
+fairchild dornier 328;Fairchild Aircraft;regional-jet    ;narrow-body;turboprop;2;under-wing
+pilatus pc-12;Pilatus Aircraft Ltd.;private         ;narrow-body;turboprop;1;front     
+tecnam p2012 traveler;S.R.L. Costruzioni Aeronautiche Tecnam;private         ;narrow-body;turboprop;2;under-wing

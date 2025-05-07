@@ -1,14 +1,14 @@
 # General Paths
 LOG_PATH = './log_app.log'
 TOP_IMAGE = './resources/nttair_fondo_transparente.png'
-BASE_CSV_PATH = 'G:/datasets/flight_prices_dataset/' # Modify it to locate the dataset folder path
+BASE_CSV_PATH = './datasets/'
 
 # CSV Paths
-AIRLINES_CSV = BASE_CSV_PATH + 'airlanes/extracted_airlanes.csv'
-AIRPLANES_CSV = BASE_CSV_PATH + 'airplanes/extracted_airplanes_complete.csv'
-AIRPORTS_CSV = BASE_CSV_PATH + 'airports/extracted_airports_complete.csv'
-CITIES_CSV = BASE_CSV_PATH + 'cities/formatted_cities.csv'
-FLIGHTS_CSV = BASE_CSV_PATH + 'itineraries/itineraries_splitted_formatted.csv'
+AIRLINES_CSV = BASE_CSV_PATH + 'airlanes.csv'
+AIRPLANES_CSV = BASE_CSV_PATH + 'airplanes.csv'
+AIRPORTS_CSV = BASE_CSV_PATH + 'airports.csv'
+CITIES_CSV = BASE_CSV_PATH + 'cities.csv'
+FLIGHTS_CSV = BASE_CSV_PATH + 'flights.csv'
 
 CSV_LIST = [AIRLINES_CSV, AIRPLANES_CSV, AIRPORTS_CSV, CITIES_CSV, FLIGHTS_CSV]
 
